@@ -1,0 +1,172 @@
+:root {
+  --bg: #f4f2ee;
+  --panel: #ffffff;
+  --ink: #2b2b2b;
+  --muted: #7a7a7a;
+  --accent: #2f6f4f;
+  --accent-ink: #ffffff;
+  --danger: #b3372f;
+  --line: #ddd8cf;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+#app { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 168px;
+  flex: 0 0 168px;
+  background: #26332c;
+  color: #dfe7e1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.sidebar .brand {
+  font-weight: 700;
+  padding: 8px 16px 16px;
+  font-size: 15px;
+  color: #fff;
+}
+.sidebar a {
+  color: #c9d4cc;
+  text-decoration: none;
+  padding: 10px 16px;
+  display: block;
+}
+.sidebar a:hover { background: #33443a; }
+.sidebar a.active { background: var(--accent); color: #fff; }
+
+.content { flex: 1; padding: 20px 24px; min-width: 0; }
+
+h2 { margin: 0 0 14px; }
+h3 { margin: 20px 0 10px; }
+h4 { margin: 16px 0 8px; }
+
+.muted { color: var(--muted); }
+
+button {
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 2px 4px 2px 0;
+}
+button:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.danger { color: var(--danger); border-color: var(--danger); }
+button:disabled { opacity: 0.5; cursor: default; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+
+.table { border-collapse: collapse; width: 100%; background: var(--panel); }
+.table th, .table td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; }
+.table tr.current { background: #eef5f0; }
+.table .actions button { margin-right: 4px; }
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+.field > span:first-child { min-width: 130px; color: #444; }
+.field input[type="number"], .field input[type="text"], .field select {
+  font: inherit;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  width: 130px;
+}
+.field input[type="range"] { flex: 1; min-width: 90px; }
+.field .val { min-width: 44px; color: var(--muted); font-variant-numeric: tabular-nums; }
+label.inline { display: inline-flex; align-items: center; gap: 6px; margin: 8px 0; }
+
+.dropzone {
+  border: 2px dashed #b9b2a4;
+  border-radius: 10px;
+  padding: 28px;
+  text-align: center;
+  background: var(--panel);
+  margin: 10px 0;
+}
+.dropzone.over { border-color: var(--accent); background: #eef5f0; }
+
+/* 编辑器布局 */
+.editor { display: flex; gap: 14px; height: calc(100vh - 40px); }
+.editor-map {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #e9e6df;
+}
+.editor-panel {
+  width: 360px;
+  flex: 0 0 360px;
+  overflow-y: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 16px 16px;
+}
+
+.mapview { position: relative; width: 100%; height: 100%; }
+.mapview-gl, .mapview-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.mapview-overlay { touch-action: none; cursor: crosshair; }
+
+.light-box {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 10px 8px;
+  margin: 8px 0;
+}
+.stops { margin: 6px 0; }
+.stop-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.stop-row input[type="number"] { width: 90px; }
+
+.route-box {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 6px 0;
+}
+.route-box.selected { border-color: var(--accent); background: #f2f8f4; }
+.route-head { display: flex; align-items: center; gap: 6px; }
+.route-name { font-weight: 600; flex: 1; cursor: default; }
+.route-stats { color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+
+canvas.profile {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+pre.selftest {
+  background: #1e2a23;
+  color: #cfe3d5;
+  padding: 12px;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
